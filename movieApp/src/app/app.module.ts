@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SearchCriteriaComponent } from './components/search-criteria/search-criteria.component';
 import { WatchlistPageComponent } from './components/watchlist-page/watchlist-page.component';
 import { MoviesComponent } from './components/movies/movies.component';
+import { MovieListComponent } from './components/movie-list/movie-list.component'
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http'
     AppComponent,
     SearchCriteriaComponent,
     WatchlistPageComponent,
-    MoviesComponent
+    MoviesComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,

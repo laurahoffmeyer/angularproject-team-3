@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from 'src/app/services/movie.service';
+import { Movie } from '../../interfaces/movie';
+import { SearchCriteriaComponent } from '../search-criteria/search-criteria.component';
 
 @Component({
   selector: 'app-movie-list',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: MovieService) { }
 
+  get movies(): Movie[] {
+    return this.service.movies;
+  }
+
+  isWatchListMovie: boolean = false;
+  
   ngOnInit(): void {
   }
 
+  isWatchList(i: number) {
+   this.isWatchListMovie = !this.isWatchListMovie;
+    console.log(this.isWatchListMovie);
+    console.log(this.movies[i].id);
+  }
 }
