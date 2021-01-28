@@ -3,3 +3,4 @@
     <input type="text" id="title" name="title" required [(ngModel)]="filterTitle" />
     <button (click)="searchTitle()">Search</button>
 </div>
+<app-movie-list *ngFor="let movie of movies; let i = index;" [singleMovie]="movie" (isOnWatchListMovie)="isWatchList(i)"></app-movie-list>

@@ -1,18 +1,18 @@
-<app-search-criteria></app-search-criteria>
+<!-- <app-search-criteria></app-search-criteria> -->
 <main>
     <div class="title-results">
-        <div *ngFor="let movie of movies; let i = index">
+        <!-- <div *ngFor="let movie of movies; let i = index"> -->
             <!-- <div class="" [style]=""></div> -->
-            <img *ngIf="movie.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}" />
-            <img *ngIf="!movie.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" />
-            <p>ID: {{ movie.id }}</p>
-            <p>Title: {{ movie.title }}</p>
-            <p>Description: {{ movie.overview }}</p>
-            <p>Release Year: {{ movie.release_date }}</p>
-            <p>Rating: {{ movie.vote_average }}</p>
-            <p>Genre: {{ movie.genre_ids }}</p>
-            <button (click)="[movie.watchList = !movie.watchList, isWatchList(i)]">WatchList</button>
-        </div>
+            <img *ngIf="singleMovie.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ singleMovie.backdrop_path }}" />
+            <img *ngIf="!singleMovie.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ singleMovie.poster_path }}" />
+            <p>ID: {{ singleMovie.id }}</p>
+            <p>Title: {{ singleMovie.title }}</p>
+            <p>Description: {{ singleMovie.overview }}</p>
+            <p>Release Year: {{ singleMovie.release_date }}</p>
+            <p>Rating: {{ singleMovie.vote_average }}</p>
+            <p>Genre: {{ singleMovie.genre_ids }}</p>
+            <button (click)="isWatchList()">WatchList</button>
+        <!-- </div> -->
     </div>
 </main>
 
