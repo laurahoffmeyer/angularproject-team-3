@@ -9,6 +9,8 @@ export class MovieService {
 
   movies: Movie[] = []
 
+  watchListArray: Movie[] = []
+
   constructor(private http: HttpClient) { }
 
   apiKey: string = "b7c1d24c6344d255a94091d79d6ac5af";
@@ -18,5 +20,12 @@ export class MovieService {
        params: { api_key: this.apiKey, query: filterTitle, include_adult: "false" }
      });
    }
+
+   getMovieId(movieId: number) {
+    return this.http.get("https://api.themoviedb.org/3/movie/" + movieId + "?", {
+      params: { api_key: this.apiKey }
+    });
+
+  }
   
 }

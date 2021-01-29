@@ -14,13 +14,18 @@ export class SearchCriteriaComponent implements OnInit {
   get movies(): Movie[] {
     return this.service.movies;
   }
+
+  get watchListArray(): Movie[] {
+    return this.service.watchListArray;
+  }
   
+  movieId: any;
   filterTitle: string = "";
   mainData: any;
   mainDataArray: any;
 
+
   ngOnInit(): void {
-    console.log(this.movies);
   }
 
   searchTitle(){
@@ -41,11 +46,20 @@ export class SearchCriteriaComponent implements OnInit {
     })
   }
 
-  isWatchListMovie: boolean = false;
+  isWatchList(i: number){   
 
-  isWatchList(i: number){
-    this.isWatchListMovie = !this.isWatchListMovie;
-    console.log(this.isWatchListMovie);
+    let movieId = this.movies[i].id;
+    this.movies[i].watchList = !this.movies[i].watchList;
+
+    this.service.getMovieId(movieId).subscribe(data => {
+
+      if (this.movies[i].watchList) {          
+        this.service.watchListArray.push(this.movies[i]);
+      }
+      else if (!this.movies[i].watchList) {
+        let wlArrayMovieIndex = this.service.watchListArray.indexOf(this.movies[i])
+        this.service.watchListArray.splice(wlArrayMovieIndex, 1);
+      }
+    })
   }
-
 }

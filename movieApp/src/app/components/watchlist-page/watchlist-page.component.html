@@ -1,1 +1,13 @@
-<p>watchlist-page works!</p>
+<h1>Watchlist</h1>
+<div class="watchlist-movie">
+    <div class="" [style]=""></div>
+    <img *ngIf="wLMovies.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ wLMovies.backdrop_path }}" />
+    <img *ngIf="!wLMovies.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ wLMovies.poster_path }}" />
+    <p>ID: {{ wLMovies.id }}</p>
+    <p>Title: {{ wLMovies.title }}</p>
+    <p>Description: {{ wLMovies.overview }}</p>
+    <p>Release Year: {{ wLMovies.release_date }}</p>
+    <p>Rating: {{ wLMovies.vote_average }}</p>
+    <p>Genre: {{ wLMovies.genre_ids }}</p>
+    <button (click)="removeFromWatchlist(index)">WatchList</button>
+</div>

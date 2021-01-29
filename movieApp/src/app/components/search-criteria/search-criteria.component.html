@@ -10,6 +10,14 @@
         <button (click)="searchTitle()">Search</button>
     </div>
 </div>
+
 <app-movie-list *ngFor="let movie of movies; let i = index;" [singleMovie]="movie"
     (isOnWatchListMovie)="isWatchList(i)"></app-movie-list>
 </div>
+
+<app-movie-list *ngFor="let movie of movies; let i = index;" [singleMovie]="movie" (isOnWatchListMovie)="isWatchList(i)"></app-movie-list>
+
+<div *ngFor="let movie of watchListArray; let i = index;">
+    <app-watchlist-page [index]="i" [wLMovies]="movie"></app-watchlist-page>
+<div>
+

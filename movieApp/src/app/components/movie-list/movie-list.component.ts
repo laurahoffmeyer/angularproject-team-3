@@ -24,16 +24,11 @@ export class MovieListComponent implements OnInit {
     watchList: false
   }
   @Output() isOnWatchListMovie = new EventEmitter<any>()
-
-  isWatchListMovie: any = false;
   
   ngOnInit(): void {
   }
 
   isWatchList() {
-    // this.isWatchListMovie = !this.isWatchListMovie;
-    // console.log(this.isWatchListMovie);
-    // console.log(this.movies[i].id);
     this.isOnWatchListMovie.emit()
   }
 }
