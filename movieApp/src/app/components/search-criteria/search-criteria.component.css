@@ -1,0 +1,68 @@
+#body{
+  /* display: flex; */
+  margin: auto;
+  background-color:rgb(248, 11, 11);
+  min-height: 100vh;
+  padding: 12px;
+  /* opacity: 0.33; */
+}
+
+.search-container {
+  background-color: snow;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid black 5px;
+  border-radius: 5px;
+  height: 250px;
+  width: auto;
+}
+
+.flixBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  /* position: relative; */
+  display: flex;
+  justify-content: center;
+  width: auto;
+  margin-bottom: 20px;
+}
+
+input {
+  margin: 3px;
+  display: flex;
+}
+
+label {
+  color: red;
+}
+
+button {
+  background: red;
+  border-radius: 5px;
+}
+
+@media (min-width: 500px) {
+  #body{
+    margin: auto;  
+    min-height: 100vh;
+  }
+
+  .search-container {
+    background-color: snow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid black 5px;
+    border-radius: 5px;
+    height: 250px;
+    width: 800px;
+    margin: auto;
+  }
+}

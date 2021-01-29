@@ -3,15 +3,21 @@
     <div class="title-results">
         <!-- <div *ngFor="let movie of movies; let i = index"> -->
             <!-- <div class="" [style]=""></div> -->
+            <div class="listing">
             <img *ngIf="singleMovie.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ singleMovie.backdrop_path }}" />
             <img *ngIf="!singleMovie.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ singleMovie.poster_path }}" />
+            </div>
+            <div class="description">
             <p>ID: {{ singleMovie.id }}</p>
             <p>Title: {{ singleMovie.title }}</p>
             <p>Description: {{ singleMovie.overview }}</p>
             <p>Release Year: {{ singleMovie.release_date }}</p>
             <p>Rating: {{ singleMovie.vote_average }}</p>
             <p>Genre: {{ singleMovie.genre_ids }}</p>
+            </div>
+            <div class="listIt">
             <button (click)="isWatchList()">WatchList</button>
+            </div>
         <!-- </div> -->
     </div>
 </main>
