@@ -26,7 +26,6 @@ export class SearchCriteriaComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.movies);
   }
 
   searchTitle(){
@@ -50,33 +49,17 @@ export class SearchCriteriaComponent implements OnInit {
   isWatchList(i: number){   
 
     let movieId = this.movies[i].id;
-    console.log("movieID =" + movieId);
-
     this.movies[i].watchList = !this.movies[i].watchList;
 
+    this.service.getMovieId(movieId).subscribe(data => {
 
-      this.service.getMovieId(movieId).subscribe(data => {
-        console.log(this.movies[i].watchList)
-
-        if (this.movies[i].watchList) {  
-        console.log("add to list");
+      if (this.movies[i].watchList) {          
         this.service.watchListArray.push(this.movies[i]);
-        console.log(this.service.watchListArray);
-        // console.log(i);
-      } 
-      else if (!this.movies[i].watchList) {
-      let selectedMovie = (movieId: any) => this.watchListArray[i].id = movieId;
-      console.log(movieId);
-      
-      console.log(this.service.watchListArray.findIndex(selectedMovie));
-       console.log(selectedMovie);
-        // let newIndex = this.service.watchList[i]
-        // console.log(newIndex);
-        // this.service.watchList.splice(newIndex, 1);
-        // console.log(i);
-        console.log("remove from list");
-        console.log(this.service.watchListArray);
       }
-      })  
+      else if (!this.movies[i].watchList) {
+        let wlArrayMovieIndex = this.service.watchListArray.indexOf(this.movies[i])
+        this.service.watchListArray.splice(wlArrayMovieIndex, 1);
+      }
+    })
   }
 }
