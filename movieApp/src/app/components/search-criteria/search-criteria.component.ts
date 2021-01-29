@@ -14,10 +14,16 @@ export class SearchCriteriaComponent implements OnInit {
   get movies(): Movie[] {
     return this.service.movies;
   }
+
+  get watchListArray(): Movie[] {
+    return this.service.watchListArray;
+  }
   
+  movieId: any;
   filterTitle: string = "";
   mainData: any;
   mainDataArray: any;
+
 
   ngOnInit(): void {
     console.log(this.movies);
@@ -41,11 +47,36 @@ export class SearchCriteriaComponent implements OnInit {
     })
   }
 
-  isWatchListMovie: boolean = false;
+  isWatchList(i: number){   
 
-  isWatchList(i: number){
-    this.isWatchListMovie = !this.isWatchListMovie;
-    console.log(this.isWatchListMovie);
+    let movieId = this.movies[i].id;
+    console.log("movieID =" + movieId);
+
+    this.movies[i].watchList = !this.movies[i].watchList;
+
+
+      this.service.getMovieId(movieId).subscribe(data => {
+        console.log(this.movies[i].watchList)
+
+        if (this.movies[i].watchList) {  
+        console.log("add to list");
+        this.service.watchListArray.push(this.movies[i]);
+        console.log(this.service.watchListArray);
+        // console.log(i);
+      } 
+      else if (!this.movies[i].watchList) {
+      let selectedMovie = (movieId: any) => this.watchListArray[i].id = movieId;
+      console.log(movieId);
+      
+      console.log(this.service.watchListArray.findIndex(selectedMovie));
+       console.log(selectedMovie);
+        // let newIndex = this.service.watchList[i]
+        // console.log(newIndex);
+        // this.service.watchList.splice(newIndex, 1);
+        // console.log(i);
+        console.log("remove from list");
+        console.log(this.service.watchListArray);
+      }
+      })  
   }
-
 }
