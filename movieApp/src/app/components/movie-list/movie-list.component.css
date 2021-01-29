@@ -1,4 +1,8 @@
 img {
+    display: flex;
+    border-radius: 5px;
+    align-content: center;
+    width: auto;
     max-width: 100px;
     height: auto;
 }
@@ -9,4 +13,106 @@ img {
     background: var(--backdrop);
     background-position: center;
     background-size: cover;
+}
+
+.title-results {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    border: black solid 2px;
+    border-radius: 5px;
+    margin: 12px;
+    padding: 15px;
+}
+
+.description {
+    background-color: snow;
+    border-radius: 5px;
+    height: auto;
+    padding: 3px;
+    margin-top: 5px;
+}
+
+p {
+    font-weight: bold;
+    padding: 5px;
+}
+
+.listIt {
+    display: flex;
+    justify-content: center;
+}
+
+.listing {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    margin-top: 5px;
+    width: 100px;
+    color: red;
+    border: solid 2px;
+}
+
+@media (min-width: 500px) {
+    img {
+        display: flex;
+        border-radius: 5px;
+        align-content: center;
+        width: auto;
+        max-width: 100px;
+        height: auto;
+    }
+    
+    #backdrop-bg {
+        min-height: 300px;
+        width: 100%;
+        background: var(--backdrop);
+        background-position: center;
+        background-size: cover;
+    }
+    
+    .title-results {
+        background-color: grey;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: black solid 2px;
+        border-radius: 5px;
+        margin: 12px;
+        padding: 15px;
+        width: 800px;
+    }
+    
+    .description {
+        background-color: snow;
+        border-radius: 5px;
+        height: auto;
+        padding: 3px;
+        margin-top: 5px;
+    }
+    
+    p {
+        font-weight: bold;
+        padding: 5px;
+    }
+    
+    .listIt {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .listing {
+        display: flex;
+        justify-content: center;
+    }
+    
+    button {
+        margin-top: 5px;
+        width: 100px;
+        color: red;
+        border: solid 2px;
+    }
 }
