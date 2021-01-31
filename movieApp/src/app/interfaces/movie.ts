@@ -7,5 +7,5 @@ export interface Movie {
     genre_ids: number[],
     backdrop_path: string,
     poster_path: string,
-    watchList: boolean
+    watchlist: boolean
 }

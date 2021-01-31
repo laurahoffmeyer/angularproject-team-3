@@ -15,12 +15,13 @@
   align-items: center;
   border: solid black 5px;
   border-radius: 5px;
-  height: 250px;
+  height: auto;
   width: auto;
 }
 
 .flixBox {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -45,6 +46,7 @@ label {
 button {
   background: red;
   border-radius: 5px;
+  width: 100%;
 }
 
 @media (min-width: 500px) {
@@ -61,7 +63,7 @@ button {
     align-items: center;
     border: solid black 5px;
     border-radius: 5px;
-    height: 250px;
+    height: auto;
     width: 800px;
     margin: auto;
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../interfaces/movie';
+import { Genre } from '../../interfaces/genre';
 
 @Component({
   selector: 'app-search-criteria',
@@ -11,55 +12,115 @@ export class SearchCriteriaComponent implements OnInit {
 
   constructor(private service: MovieService) { }
 
-  get movies(): Movie[] {
-    return this.service.movies;
+  get movieArray(): Movie[] {
+    return this.service.movieArray;
+  }
+  get watchlistArray(): Movie[] {
+    return this.service.watchlistArray;
+  }
+  get genreArray(): Genre[] {
+    return this.service.genreArray;
   }
 
-  get watchListArray(): Movie[] {
-    return this.service.watchListArray;
-  }
-  
-  movieId: any;
   filterTitle: string = "";
+
+  filterGenre: string = "";
+
+  // Rating Values
+  filterRating: any;
+  filterRatingGTE: string = "";
+  filterRatingLTE: string = "";
+
+  filterReleaseYear: string = "";
+
+  movieId: any;
   mainData: any;
   mainDataArray: any;
 
-
   ngOnInit(): void {
+    this.service.getGenreArray().subscribe(data => {
+      this.mainData = data;
+      let mainDataArray = this.mainData.genres;
+    
+      mainDataArray.forEach((genre: Genre) => {
+        this.service.genreArray.push(genre);
+      });    
+    })    
   }
 
   searchTitle(){
     this.service.getMovieTitles(this.filterTitle).subscribe(data => {
           
-      this.service.movies.splice(0, this.service.movies.length);
+      this.service.movieArray.splice(0, this.service.movieArray.length);
 
       this.mainData = data;
       let mainDataArray = this.mainData.results;
 
-      mainDataArray.forEach((movie: any) => {
-        this.service.movies.push(movie);
+      mainDataArray.forEach((movie: Movie) => {
+        this.service.movieArray.push(movie);
       });
-      // this.backdropBg = document.getElementById('backdrop-bg') as HTMLElement;  
-      // this.backdropBg.style.setProperty('--backdrop', 'url(https://image.tmdb.org/t/p/original/' + mainDataArray.backdrop_path + ')');
+
       this.filterTitle = "";
-      console.log(this.movies);
     })
+  }
+ 
+  searchFilters() {
+    
+    if (this.filterRating = 1) {
+      this.filterRatingGTE = "10";
+      this.filterRatingLTE = "10";
+    } else if (this.filterRating = 2) {
+      this.filterRatingGTE = "10";
+      this.filterRatingLTE = "8";
+    } else if (this.filterRating = 3) {
+      this.filterRatingGTE = "10";
+      this.filterRatingLTE = "5";
+    } else if (this.filterRating = 4) {
+      this.filterRatingGTE = "4";
+      this.filterRatingLTE = "1";
+    } else if (this.filterRating = 5) {
+      this.filterRatingGTE = "1";
+      this.filterRatingLTE = "1";
+    } else {
+      this.filterRatingGTE = "";
+      this.filterRatingLTE = "";
+    }
+
+    this.service.getMovieFilters(this.filterGenre, this.filterRatingGTE, this.filterRatingLTE, this.filterReleaseYear).subscribe(data => {
+          
+      this.service.movieArray.splice(0, this.service.movieArray.length);
+
+      this.mainData = data;
+      let mainDataArray = this.mainData.results;
+
+      mainDataArray.forEach((movie: Movie) => {
+        this.service.movieArray.push(movie);
+      });
+
+      this.filterTitle = "";
+      this.filterGenre = "";
+      this.filterRating = "";
+      this.filterReleaseYear = "";
+    })
+    
   }
 
   isWatchList(i: number){   
 
-    let movieId = this.movies[i].id;
-    this.movies[i].watchList = !this.movies[i].watchList;
+    let movieId = this.movieArray[i].id;
+    this.movieArray[i].watchlist = !this.movieArray[i].watchlist;
 
     this.service.getMovieId(movieId).subscribe(data => {
 
-      if (this.movies[i].watchList) {          
-        this.service.watchListArray.push(this.movies[i]);
+      if (this.movieArray[i].watchlist) {          
+        this.service.watchlistArray.push(this.movieArray[i]);
       }
-      else if (!this.movies[i].watchList) {
-        let wlArrayMovieIndex = this.service.watchListArray.indexOf(this.movies[i])
-        this.service.watchListArray.splice(wlArrayMovieIndex, 1);
+
+      else if (!this.movieArray[i].watchlist) {
+        let wlArrayMovieIndex = this.service.watchlistArray.indexOf(this.movieArray[i])
+        this.service.watchlistArray.splice(wlArrayMovieIndex, 1);
       }
+
     })
   }
 }

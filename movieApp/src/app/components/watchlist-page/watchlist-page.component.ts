@@ -9,7 +9,7 @@ import { Movie } from '../../interfaces/movie';
 })
 export class WatchlistPageComponent implements OnInit {
 
-  @Input() wLMovies: Movie = {
+  @Input() wlMovie: Movie = {
     title: "",
     id: 0,
     overview: "",
@@ -18,7 +18,7 @@ export class WatchlistPageComponent implements OnInit {
     genre_ids: [],
     backdrop_path: "",
     poster_path: "",
-    watchList: false
+    watchlist: false
   }
   @Input() index: any;
   
@@ -28,7 +28,8 @@ export class WatchlistPageComponent implements OnInit {
   }
 
   removeFromWatchlist(index: any) {
-    this.service.watchListArray.splice(index, 1);
+    this.wlMovie.watchlist = false
+    this.service.watchlistArray.splice(index, 1);
   }
 
 }

@@ -21,7 +21,7 @@ export class MovieListComponent implements OnInit {
     genre_ids: [],
     backdrop_path: "",
     poster_path: "",
-    watchList: false
+    watchlist: false
   }
   @Output() isOnWatchListMovie = new EventEmitter<any>()
   
