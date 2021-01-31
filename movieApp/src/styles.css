@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+#body, html{
+    /* display: flex; */
+    margin: auto;
+    background-color:rgb(248, 11, 11);
+    padding: 12px;
+    height: 100%;
+  }
