@@ -1,7 +1,7 @@
-#body{
+#body {
   /* display: flex; */
   margin: auto;
-  background-color:rgb(248, 11, 11);
+  background-color: rgb(248, 11, 11);
   min-height: 100vh;
   padding: 12px;
   /* opacity: 0.33; */
@@ -17,6 +17,7 @@
   border-radius: 5px;
   height: auto;
   width: auto;
+  margin: 15px;
 }
 
 .flixBox {
@@ -50,8 +51,8 @@ button {
 }
 
 @media (min-width: 500px) {
-  #body{
-    margin: auto;  
+  #body {
+    margin: auto;
     min-height: 100vh;
   }
 

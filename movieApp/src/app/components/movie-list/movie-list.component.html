@@ -1,25 +1,41 @@
 <!-- <app-search-criteria></app-search-criteria> -->
 <main>
-    <div class="title-results">
-        <!-- <div *ngFor="let movie of movies; let i = index"> -->
-            <!-- <div class="" [style]=""></div> -->
-            <div class="listing">
-            <img *ngIf="singleMovie.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ singleMovie.backdrop_path }}" />
-            <img *ngIf="!singleMovie.backdrop_path" src="https://image.tmdb.org/t/p/original/{{ singleMovie.poster_path }}" />
-            </div>
-            <div class="description">
-            <p>ID: {{ singleMovie.id }}</p>
-            <p>Title: {{ singleMovie.title }}</p>
-            <p>Description: {{ singleMovie.overview }}</p>
-            <p>Release Year: {{ singleMovie.release_date }}</p>
-            <p>Rating: {{ singleMovie.vote_average }}</p>
-            <p>Genre: {{ singleMovie.genre_ids }}</p>
-            </div>
-            <div class="listIt">
-            <button (click)="isWatchList()">WatchList</button>
-            </div>
-        <!-- </div> -->
+  <div class="title-results">
+    <!-- <div *ngFor="let movie of movies; let i = index"> -->
+    <!-- <div class="" [style]=""></div> -->
+    <div class="listing">
+      <img
+        *ngIf="singleMovie.backdrop_path"
+        src="https://image.tmdb.org/t/p/original/{{
+          singleMovie.backdrop_path
+        }}"
+      />
+      <img
+        *ngIf="!singleMovie.backdrop_path"
+        src="https://image.tmdb.org/t/p/original/{{ singleMovie.poster_path }}"
+      />
+      <button (click)="showPopup()"></button>
+      <div *ngIf="popupIndex === i">
+        <div>
+          <p>Description: {{ singleMovie.overview }}</p>
+          <p>Release Year: {{ singleMovie.release_date }}</p>
+          <p>Rating: {{ singleMovie.vote_average }}</p>
+          <p *ngFor="let genre of newGenres">{{ genre }}</p>
+          <button (click)="closePopup()">Close</button>
+        </div>
+      </div>
     </div>
+    <div class="description">
+      <p>ID: {{ singleMovie.id }}</p>
+      <p>Title: {{ singleMovie.title }}</p>
+      <!-- <p>Description: {{ singleMovie.overview }}</p>
+      <p>Release Year: {{ singleMovie.release_date }}</p>
+      <p>Rating: {{ singleMovie.vote_average }}</p> -->
+      <p>Genre: {{ singleMovie.genre_ids }}</p>
+    </div>
+    <div class="listIt">
+      <button (click)="isWatchList()">WatchList</button>
+    </div>
+    <!-- </div> -->
+  </div>
 </main>
-
-
