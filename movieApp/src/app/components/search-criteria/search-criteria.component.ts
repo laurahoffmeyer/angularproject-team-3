@@ -2,13 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../interfaces/movie';
 import { Genre } from '../../interfaces/genre';
+import { AppRoutingModule } from 'src/app/app-routing.module'
 
 @Component({
   selector: 'app-search-criteria',
   templateUrl: './search-criteria.component.html',
   styleUrls: ['./search-criteria.component.css'],
 })
+
 export class SearchCriteriaComponent implements OnInit {
+  showWatchList: boolean = false;
+  showMovieResults: boolean = false;
+  
+  watchlistClicked() {
+    this.showWatchList = true;
+    this.showMovieResults = false;
+  }
+
   constructor(private service: MovieService) {}
 
   get movieArray(): Movie[] {
@@ -60,6 +70,8 @@ export class SearchCriteriaComponent implements OnInit {
 
       this.filterTitle = '';
     });
+    this.showMovieResults = true;
+    this.showWatchList = false;
   }
 
   searchFilters() {
@@ -105,6 +117,8 @@ export class SearchCriteriaComponent implements OnInit {
         this.filterRating = '';
         this.filterReleaseYear = '';
       });
+      this.showMovieResults = true;
+      this.showWatchList = false;  
   }
 
   isWatchList(i: number) {
