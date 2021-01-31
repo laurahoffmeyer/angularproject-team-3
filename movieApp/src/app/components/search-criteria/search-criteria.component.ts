@@ -6,11 +6,10 @@ import { Genre } from '../../interfaces/genre';
 @Component({
   selector: 'app-search-criteria',
   templateUrl: './search-criteria.component.html',
-  styleUrls: ['./search-criteria.component.css']
+  styleUrls: ['./search-criteria.component.css'],
 })
 export class SearchCriteriaComponent implements OnInit {
-
-  constructor(private service: MovieService) { }
+  constructor(private service: MovieService) {}
 
   get movieArray(): Movie[] {
     return this.service.movieArray;
@@ -22,35 +21,34 @@ export class SearchCriteriaComponent implements OnInit {
     return this.service.genreArray;
   }
 
-  filterTitle: string = "";
+  filterTitle: string = '';
 
-  filterGenre: string = "";
+  filterGenre: string = '';
 
   // Rating Values
   filterRating: any;
-  filterRatingGTE: string = "";
-  filterRatingLTE: string = "";
+  filterRatingGTE: string = '';
+  filterRatingLTE: string = '';
 
-  filterReleaseYear: string = "";
+  filterReleaseYear: string = '';
 
   movieId: any;
   mainData: any;
   mainDataArray: any;
 
   ngOnInit(): void {
-    this.service.getGenreArray().subscribe(data => {
+    this.service.getGenreArray().subscribe((data) => {
       this.mainData = data;
       let mainDataArray = this.mainData.genres;
-    
+
       mainDataArray.forEach((genre: Genre) => {
         this.service.genreArray.push(genre);
-      });    
-    })    
+      });
+    });
   }
 
-  searchTitle(){
-    this.service.getMovieTitles(this.filterTitle).subscribe(data => {
-          
+  searchTitle() {
+    this.service.getMovieTitles(this.filterTitle).subscribe((data) => {
       this.service.movieArray.splice(0, this.service.movieArray.length);
 
       this.mainData = data;
@@ -60,67 +58,68 @@ export class SearchCriteriaComponent implements OnInit {
         this.service.movieArray.push(movie);
       });
 
-      this.filterTitle = "";
-    })
+      this.filterTitle = '';
+    });
   }
- 
+
   searchFilters() {
-    
-    if (this.filterRating = 1) {
-      this.filterRatingGTE = "10";
-      this.filterRatingLTE = "10";
-    } else if (this.filterRating = 2) {
-      this.filterRatingGTE = "10";
-      this.filterRatingLTE = "8";
-    } else if (this.filterRating = 3) {
-      this.filterRatingGTE = "10";
-      this.filterRatingLTE = "5";
-    } else if (this.filterRating = 4) {
-      this.filterRatingGTE = "4";
-      this.filterRatingLTE = "1";
-    } else if (this.filterRating = 5) {
-      this.filterRatingGTE = "1";
-      this.filterRatingLTE = "1";
+    if ((this.filterRating = 1)) {
+      this.filterRatingGTE = '10';
+      this.filterRatingLTE = '10';
+    } else if ((this.filterRating = 2)) {
+      this.filterRatingGTE = '10';
+      this.filterRatingLTE = '8';
+    } else if ((this.filterRating = 3)) {
+      this.filterRatingGTE = '10';
+      this.filterRatingLTE = '5';
+    } else if ((this.filterRating = 4)) {
+      this.filterRatingGTE = '4';
+      this.filterRatingLTE = '1';
+    } else if ((this.filterRating = 5)) {
+      this.filterRatingGTE = '1';
+      this.filterRatingLTE = '1';
     } else {
-      this.filterRatingGTE = "";
-      this.filterRatingLTE = "";
+      this.filterRatingGTE = '';
+      this.filterRatingLTE = '';
     }
 
-    this.service.getMovieFilters(this.filterGenre, this.filterRatingGTE, this.filterRatingLTE, this.filterReleaseYear).subscribe(data => {
-          
-      this.service.movieArray.splice(0, this.service.movieArray.length);
+    this.service
+      .getMovieFilters(
+        this.filterGenre,
+        this.filterRatingGTE,
+        this.filterRatingLTE,
+        this.filterReleaseYear
+      )
+      .subscribe((data) => {
+        this.service.movieArray.splice(0, this.service.movieArray.length);
 
-      this.mainData = data;
-      let mainDataArray = this.mainData.results;
+        this.mainData = data;
+        let mainDataArray = this.mainData.results;
 
-      mainDataArray.forEach((movie: Movie) => {
-        this.service.movieArray.push(movie);
+        mainDataArray.forEach((movie: Movie) => {
+          this.service.movieArray.push(movie);
+        });
+
+        this.filterTitle = '';
+        this.filterGenre = '';
+        this.filterRating = '';
+        this.filterReleaseYear = '';
       });
-
-      this.filterTitle = "";
-      this.filterGenre = "";
-      this.filterRating = "";
-      this.filterReleaseYear = "";
-    })
-    
   }
 
-  isWatchList(i: number){   
-
+  isWatchList(i: number) {
     let movieId = this.movieArray[i].id;
     this.movieArray[i].watchlist = !this.movieArray[i].watchlist;
 
-    this.service.getMovieId(movieId).subscribe(data => {
-
-      if (this.movieArray[i].watchlist) {          
+    this.service.getMovieId(movieId).subscribe((data) => {
+      if (this.movieArray[i].watchlist) {
         this.service.watchlistArray.push(this.movieArray[i]);
-      }
-
-      else if (!this.movieArray[i].watchlist) {
-        let wlArrayMovieIndex = this.service.watchlistArray.indexOf(this.movieArray[i])
+      } else if (!this.movieArray[i].watchlist) {
+        let wlArrayMovieIndex = this.service.watchlistArray.indexOf(
+          this.movieArray[i]
+        );
         this.service.watchlistArray.splice(wlArrayMovieIndex, 1);
       }
-
-    })
+    });
   }
 }
