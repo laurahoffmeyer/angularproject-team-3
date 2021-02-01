@@ -1,6 +1,7 @@
 img {
     max-width: 100px;
     height: auto;
+    border-radius: 5px;
 }
 
 #backdrop-bg {
@@ -10,3 +11,44 @@ img {
     background-position: center;
     background-size: cover;
 }
+
+h1 {
+    background-color: black;
+    color: white;
+    height: auto;
+    border-radius: 25px;
+    padding: 12px;
+}
+
+.watchlist-movie {
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    width: 600px;
+    height: 250px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    background: red;
+    color: white;
+    border-radius: 5px;
+    width: 23px;
+    height: 23px;
+    border-radius: 50px;
+
+  }
+
+  /* .back {
+    display: flex;
+    align-self: flex-end;
+    position: absolute;
+    z-index: +1;
+    bottom: 1px;
+    right: 1px;
+    width: 23px;
+    color: white;
+    background-color: black;
+} */
+
