@@ -11,6 +11,9 @@ import { Genre } from '../../interfaces/genre';
 export class SearchCriteriaComponent implements OnInit {
   constructor(private service: MovieService) {}
 
+  showMovieResults: boolean = false
+  showWatchList: boolean = false
+
   get movieArray(): Movie[] {
     return this.service.movieArray;
   }
@@ -22,7 +25,6 @@ export class SearchCriteriaComponent implements OnInit {
   }
 
   filterTitle: string = '';
-
   filterGenre: string = '';
 
   // Rating Values
@@ -48,6 +50,9 @@ export class SearchCriteriaComponent implements OnInit {
   }
 
   searchTitle() {
+    this.showWatchList = false;
+    this.showMovieResults = true;
+    
     this.service.getMovieTitles(this.filterTitle).subscribe((data) => {
       this.service.movieArray.splice(0, this.service.movieArray.length);
 
@@ -63,6 +68,9 @@ export class SearchCriteriaComponent implements OnInit {
   }
 
   searchFilters() {
+    this.showWatchList = false;
+    this.showMovieResults = true;  
+    
     if ((this.filterRating = 1)) {
       this.filterRatingGTE = '10';
       this.filterRatingLTE = '10';
@@ -83,13 +91,7 @@ export class SearchCriteriaComponent implements OnInit {
       this.filterRatingLTE = '';
     }
 
-    this.service
-      .getMovieFilters(
-        this.filterGenre,
-        this.filterRatingGTE,
-        this.filterRatingLTE,
-        this.filterReleaseYear
-      )
+    this.service.getMovieFilters(this.filterGenre, this.filterRatingGTE, this.filterRatingLTE, this.filterReleaseYear)
       .subscribe((data) => {
         this.service.movieArray.splice(0, this.service.movieArray.length);
 
@@ -108,6 +110,7 @@ export class SearchCriteriaComponent implements OnInit {
   }
 
   isWatchList(i: number) {
+    
     let movieId = this.movieArray[i].id;
     this.movieArray[i].watchlist = !this.movieArray[i].watchlist;
 
@@ -121,5 +124,10 @@ export class SearchCriteriaComponent implements OnInit {
         this.service.watchlistArray.splice(wlArrayMovieIndex, 1);
       }
     });
+    }
+
+  watchlistClicked() {
+    this.showWatchList = true;
+    this.showMovieResults = false;
   }
 }

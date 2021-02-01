@@ -9,6 +9,7 @@
       />
       <!-- <img class="image2" src="assets/img/movie_reel.JPG" alt="movie reel" style="width: 300px;height: 200px;"> -->
     </div>
+    <button (click)="watchlistClicked()">My Watchlist</button>
     <form class="flixBox">
       <label for="title">Title</label>
       <input
@@ -25,8 +26,7 @@
       <select id="genre" name="genre" [(ngModel)]="filterGenre">
         <option
           *ngFor="let genre of genreArray; let i = index"
-          [ngValue]="genre.id"
-        >
+          [ngValue]="genre.id">
           {{ genre.name }}
         </option>
       </select>
@@ -44,6 +44,7 @@
     </form>
   </div>
 
+<div *ngIf="showMovieResults">
   <app-movie-list
     *ngFor="let movie of movieArray; let i = index"
     [singleMovie]="movie"
@@ -52,8 +53,11 @@
     [movieGenres]="movie.genre_ids"
   ></app-movie-list>
 </div>
+</div>
 
-<div *ngFor="let movie of watchlistArray; let i = index">
+<div *ngIf="showWatchList">
+  <div *ngFor="let movie of watchlistArray; let i = index">
   <app-watchlist-page [index]="i" [wlMovie]="movie"></app-watchlist-page>
   <div></div>
+</div>
 </div>
