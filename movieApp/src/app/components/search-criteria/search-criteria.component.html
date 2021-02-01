@@ -44,20 +44,20 @@
     </form>
   </div>
 
-<div *ngIf="showMovieResults">
-  <app-movie-list
-    *ngFor="let movie of movieArray; let i = index"
-    [singleMovie]="movie"
-    [i]="i"
-    (isOnWatchListMovie)="isWatchList(i)"
-    [movieGenres]="movie.genre_ids"
-  ></app-movie-list>
-</div>
+  <div *ngIf="showMovieResults">
+    <app-movie-list
+      *ngFor="let movie of movieArray; let i = index"
+      [singleMovie]="movie"
+      [i]="i"
+      (isOnWatchListMovie)="isWatchList(i)"
+      [movieGenres]="movie.genre_ids"
+    ></app-movie-list>
+  </div>
 </div>
 
 <div *ngIf="showWatchList">
+  <h1>Watchlist</h1>
   <div *ngFor="let movie of watchlistArray; let i = index">
-  <app-watchlist-page [index]="i" [wlMovie]="movie"></app-watchlist-page>
-  <div></div>
-</div>
+    <app-watchlist-page [index]="i" [wlMovie]="movie"></app-watchlist-page>
+  </div>
 </div>
