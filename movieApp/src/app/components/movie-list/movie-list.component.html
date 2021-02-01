@@ -1,5 +1,6 @@
 <!-- <app-search-criteria></app-search-criteria> -->
-<main>
+<body>
+  <main>
   <div class="title-results">
     <!-- <div *ngFor="let movie of movies; let i = index"> -->
     <!-- <div class="" [style]=""></div> -->
@@ -14,14 +15,14 @@
         *ngIf="!singleMovie.backdrop_path"
         src="https://image.tmdb.org/t/p/original/{{ singleMovie.poster_path }}"
       />
-      <button (click)="showPopup()"></button>
+      <button (click)="showPopup()" class="info">Details</button>
       <div *ngIf="popupIndex === i">
-        <div>
+        <div class="boxes">
           <p>Description: {{ singleMovie.overview }}</p>
           <p>Release Year: {{ singleMovie.release_date }}</p>
           <p>Rating: {{ singleMovie.vote_average }}</p>
           <p *ngFor="let genre of newGenres">{{ genre }}</p>
-          <button (click)="closePopup()">Close</button>
+          <button (click)="closePopup()"class="back">x</button>
         </div>
       </div>
     </div>
@@ -39,3 +40,4 @@
     <!-- </div> -->
   </div>
 </main>
+</body>
