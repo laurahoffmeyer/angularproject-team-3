@@ -7,10 +7,11 @@
           singleMovie.backdrop_path
         }}"
       />
+      <img *ngIf="!singleMovie.backdrop_path && !singleMovie.poster_path" src="../../../assets/img/default-img.jpg" />
     </div>
     <div class="vert-image-container">
       <img
-        *ngIf="!singleMovie.backdrop_path"
+        *ngIf="!singleMovie.backdrop_path && singleMovie.poster_path"
         src="https://image.tmdb.org/t/p/original/{{ singleMovie.poster_path }}"
       />
     </div>
@@ -36,10 +37,11 @@
                   singleMovie.backdrop_path
                 }}"
               />
+            <img *ngIf="!singleMovie.backdrop_path && !singleMovie.poster_path" src="../../../assets/img/default-img.jpg" />
             </div>
             <div class="vert-image-container">
               <img
-                *ngIf="!singleMovie.backdrop_path"
+                *ngIf="!singleMovie.backdrop_path && singleMovie.poster_path"
                 src="https://image.tmdb.org/t/p/original/{{ singleMovie.poster_path }}"
               />
             </div>

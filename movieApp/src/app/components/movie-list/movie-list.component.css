@@ -91,7 +91,7 @@ main {
     flex-direction: column;
     border-radius: 5px;
     margin: 12px;
-    max-width: 768px;
+    width: 100%;
 }
 
 .details-wrap {
@@ -145,7 +145,7 @@ button {
     border: solid 2px;
 }
 
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
     /* img {
         display: flex;
         border-radius: 5px;
@@ -154,6 +154,10 @@ button {
         max-width: 100px;
         height: auto;
     } */
+
+    .title-results {
+        max-width: 768px;
+    }    
     
     #backdrop-bg {
         min-height: 300px;
