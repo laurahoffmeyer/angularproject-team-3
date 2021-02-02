@@ -30,7 +30,7 @@ export class MovieService {
 
   getMovieFilters(filterGenre: string, filterRatingGTE: string, filterRatingLTE: string, filterReleaseYear: string) {
     return this.http.get("https://api.themoviedb.org/3/discover/movie?", {
-      params: { api_key: this.apiKey, with_genres: filterGenre, "vote_average.gte": filterRatingGTE, "vote_average.lte": filterRatingLTE, year: filterReleaseYear, include_adult: "false", sort_by: "release_date.desc", language: "en-US", original_language: "en" }
+      params: { api_key: this.apiKey, with_genres: filterGenre, "vote_average.gte": filterRatingGTE, "vote_average.lte": filterRatingLTE, year: filterReleaseYear, include_adult: "false", sort_by: "popularity.desc", language: "en-US", original_language: "en" }
     }); 
   }
 

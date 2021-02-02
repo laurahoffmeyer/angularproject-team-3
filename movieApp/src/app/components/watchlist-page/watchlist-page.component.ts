@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Genre } from 'src/app/interfaces/genre';
 import { MovieService } from 'src/app/services/movie.service';
 import { Movie } from '../../interfaces/movie';
 
@@ -10,6 +11,12 @@ import { Movie } from '../../interfaces/movie';
 export class WatchlistPageComponent implements OnInit {
 
   constructor(private service: MovieService) { }
+
+  newGenres: any[] = [];
+
+  get genreArray(): Genre[] {
+    return this.service.genreArray;
+  }
 
   @Input() wlMovie: Movie = {
     title: "",
@@ -25,11 +32,21 @@ export class WatchlistPageComponent implements OnInit {
   @Input() index: any;
   
   ngOnInit(): void {
+    let movieGenres = this.wlMovie.genre_ids
+    this.genreArray.forEach((item) => {
+      movieGenres.forEach((id: any) => {
+        if (item.id === id) {
+          this.newGenres.push(item.name);
+        }
+      });
+    });
+    if (this.newGenres.length === 0) {
+      this.newGenres.push("N/A")
+    }
   }
 
   removeFromWatchlist(index: any) {
     this.wlMovie.watchlist = false
     this.service.watchlistArray.splice(index, 1);
   }
-
 }

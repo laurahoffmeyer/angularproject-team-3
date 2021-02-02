@@ -1,27 +1,29 @@
-<div id="body">
+<div class="search-wrapper">
   <div class="search-container">
+    <div class="wl-btn">
+      <button (click)="watchlistClicked()">My Watchlist</button>
+    </div>
     <div class="logo">
       <img
-        class="image1"
         src="assets/img/flix_finder1.png"
         alt="flix finder logo"
-        style="width: 300px; height: 100px"
       />
       <!-- <img class="image2" src="assets/img/movie_reel.JPG" alt="movie reel" style="width: 300px;height: 200px;"> -->
     </div>
-    <button (click)="watchlistClicked()">My Watchlist</button>
-    <form class="flixBox">
-      <label for="title">Title</label>
-      <input
-        type="text"
-        id="title"
-        name="title"
-        required
-        [(ngModel)]="filterTitle"
-      />
-      <button (click)="searchTitle()">Search by Title</button>
-    </form>
-    <form class="flixBox">
+    <div class="forms-wrapper">
+      <form>
+        <label for="title">Search by Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          required
+          [(ngModel)]="filterTitle"
+        />
+        <button (click)="searchTitle()">Search</button>
+      </form>
+      <form>
+        <hr>
       <label for="genre">Genre</label>
       <select id="genre" name="genre" [(ngModel)]="filterGenre">
         <option
@@ -40,8 +42,9 @@
       </select>
       <label for="year">Release Year</label>
       <input id="year" name="year" [(ngModel)]="filterReleaseYear" />
-      <button (click)="searchFilters()">Search by Options</button>
-    </form>
+      <button (click)="searchFilters()">Find Movies</button>
+      </form>
+    </div>
   </div>
 
   <div *ngIf="showMovieResults">
@@ -50,13 +53,13 @@
       [singleMovie]="movie"
       [i]="i"
       (isOnWatchListMovie)="isWatchList(i)"
-      [movieGenres]="movie.genre_ids"
     ></app-movie-list>
   </div>
 </div>
 
-<div *ngIf="showWatchList">
-  <h1>Watchlist</h1>
+<div class="watchlist-container" *ngIf="showWatchList">
+  <h1>My Watchlist</h1>
+  <div *ngIf="watchlistArray.length === 0"><h5>Add Something to Your Watchlist</h5></div>
   <div *ngFor="let movie of watchlistArray; let i = index">
     <app-watchlist-page [index]="i" [wlMovie]="movie"></app-watchlist-page>
   </div>

@@ -1,4 +1,3 @@
-<body>
 <div class="watchlist-movie">
     <div class="" [style]=""></div>
     <div class="horz-image-container">
@@ -12,10 +11,11 @@
     <p>{{ wlMovie.overview }}</p>
     <div class="detailline">
     <p>Release Date: {{ wlMovie.release_date }}</p>
-    <p>User Rating: {{ wlMovie.vote_average }}</p>
-    <p>Genre: {{ wlMovie.genre_ids }}</p>
+    <p>Rating: {{ wlMovie.vote_average }}</p>
+    <div class="genres">
+        <p *ngFor="let genre of newGenres">{{ genre }}</p>
+    </div>
     </div>
       <button (click)="removeFromWatchlist(index)">Remove from Watchlist</button>
 </div>
 </div>
-</body>

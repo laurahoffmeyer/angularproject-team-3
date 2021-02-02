@@ -1,21 +1,57 @@
-.search-container {
-  background-color: snow;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: solid black 5px;
-  border-radius: 5px;
-  height: auto;
-  width: auto;
-  padding: 15px;
+h1 {
+  color: #F05454;
 }
 
-.flixBox {
+.logo img {
+  max-width: 300px;
+  height: auto;
+  margin-top: 20px;
+}
+
+hr {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.search-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.search-container {
+  background-color: #E8E8E8;
+  border-radius: 5px;
+  height: auto;
+  width: 100%;
+  padding: 20px 5px;
+}
+
+.forms-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+}
+
+.wl-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.wl-btn button {
+  width: auto;
 }
 
 .logo {
@@ -26,39 +62,42 @@
   margin-bottom: 20px;
 }
 
-input {
-  margin: 3px;
-  display: flex;
+input, select {
+  padding: 5px;
+  width: 100%;
+  border: none;
 }
 
 label {
   color: #F05454;
+  padding-top: 15px;
 }
 
 button {
-  display: flex;
-  justify-content: center;
   background: #F05454;
-  border-radius: 5px;
-  width: auto;
+  color: #E8E8E8;
+  width: 100%;
+  margin: 10px 0px 0px 0px;
 }
 
-@media (min-width: 500px) {
-  #body {
-    margin: auto;
-    /* min-height: 100vh; */
+.watchlist-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.watchlist-container h5 {
+  color: #F05454;
+}
+
+@media (min-width: 768px) {
+  .search-container {
+    width: 768px;
   }
 
-  .search-container {
-    background-color: snow;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: solid black 5px;
-    border-radius: 5px;
-    height: auto;
-    width: 800px;
-    margin: auto;
-  }
+  form {
+    width: 50%;
+  }  
+  
 }

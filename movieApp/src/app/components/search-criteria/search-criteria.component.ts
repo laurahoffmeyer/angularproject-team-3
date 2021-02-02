@@ -71,25 +71,28 @@ export class SearchCriteriaComponent implements OnInit {
     this.showWatchList = false;
     this.showMovieResults = true;  
     
-    if ((this.filterRating = 1)) {
+    if ((this.filterRating === 1)) {
       this.filterRatingGTE = '10';
       this.filterRatingLTE = '10';
-    } else if ((this.filterRating = 2)) {
-      this.filterRatingGTE = '10';
-      this.filterRatingLTE = '8';
-    } else if ((this.filterRating = 3)) {
-      this.filterRatingGTE = '10';
-      this.filterRatingLTE = '5';
-    } else if ((this.filterRating = 4)) {
-      this.filterRatingGTE = '4';
-      this.filterRatingLTE = '1';
-    } else if ((this.filterRating = 5)) {
+    } else if ((this.filterRating === 2)) {
+      this.filterRatingGTE = '8';
+      this.filterRatingLTE = '10';
+    } else if ((this.filterRating === 3)) {
+      this.filterRatingGTE = '5';
+      this.filterRatingLTE = '10';
+    } else if ((this.filterRating === 4)) {
+      this.filterRatingGTE = '1';
+      this.filterRatingLTE = '4';
+    } else if ((this.filterRating === 5)) {
       this.filterRatingGTE = '1';
       this.filterRatingLTE = '1';
     } else {
       this.filterRatingGTE = '';
       this.filterRatingLTE = '';
     }
+
+    console.log(this.filterRatingGTE)
+    console.log(this.filterRatingLTE)
 
     this.service.getMovieFilters(this.filterGenre, this.filterRatingGTE, this.filterRatingLTE, this.filterReleaseYear)
       .subscribe((data) => {
@@ -98,6 +101,8 @@ export class SearchCriteriaComponent implements OnInit {
         this.mainData = data;
         let mainDataArray = this.mainData.results;
 
+        console.log(this.service.getMovieFilters);
+        console.log(mainDataArray);
         mainDataArray.forEach((movie: Movie) => {
           this.service.movieArray.push(movie);
         });
