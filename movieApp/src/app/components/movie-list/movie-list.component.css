@@ -1,15 +1,76 @@
-body {
+main {
     display: flex;
     justify-content: center;
 }
 
-img {
+.back {
     display: flex;
-    border-radius: 5px;
-    align-content: center;
+    font-size: 32px;
+    z-index: +1;
+    color: white;
+    background-color: black;
+    border: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    height: 100vh;
+    width: 100%;
+    z-index: +1;
+}
+
+.boxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: black solid 3px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: +1;
     width: auto;
-    max-width: 100px;
     height: auto;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    padding: 15px;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+
+.boxes p {
+    padding: 0px auto;
+    margin: 0px auto;
+}
+
+.genres {
+    display: flex;
+    flex-direction: row;
+}
+
+.genres p:after {
+    content: " ";
+}
+
+.horz-image-container img {
+    width: 100%;
+}
+
+.vert-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+}
+
+.vert-image-container img {
+    max-height: 350px;
+    width: auto;
 }
 
 #backdrop-bg {
@@ -21,21 +82,38 @@ img {
 }
 
 .title-results {
-    background-color: grey;
+    background-color: #E8E8E8;
     display: flex;
     flex-direction: column;
     border: black solid 2px;
     border-radius: 5px;
     margin: 12px;
-    padding: 15px;
+    max-width: 800px;
+}
+
+.details-wrap {
+    padding: 20px;
+}
+
+.details-wrap p {
+    padding: 0px auto;
+    margin: 0px 0px 0px 5px;
+}
+
+.details-wrap h2 {
+    text-align: center;
 }
 
 .description {
-    background-color: snow;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     border-radius: 5px;
     height: auto;
     padding: 3px;
     margin-top: 5px;
+    text-align: center;
 }
 
 p {
@@ -46,6 +124,7 @@ p {
 .listIt {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .listing {
@@ -58,25 +137,20 @@ button {
     display: flex;
     justify-content: center;
     margin-top: 5px;
-    width: 100px;
-    color: red;
+    background-color: #F05454;
+    color: #E8E8E8;
     border: solid 2px;
 }
 
-.showPopup {
-    display: flex;
-    height: 5px;
-}
-
-@media (min-width: 500px) {
-    img {
+@media (min-width: 768px) {
+    /* img {
         display: flex;
         border-radius: 5px;
         align-content: center;
         width: auto;
         max-width: 100px;
         height: auto;
-    }
+    } */
     
     #backdrop-bg {
         min-height: 300px;
@@ -86,7 +160,7 @@ button {
         background-size: cover;
     }
     
-    .title-results {
+    /* .title-results {
         background-color: grey;
         display: flex;
         flex-direction: column;
@@ -96,44 +170,24 @@ button {
         margin: 12px;
         padding: 15px;
         width: 800px;
-    }
+    } */
     
-    .description {
-        background-color: snow;
+    /* .description {
         border-radius: 5px;
         height: auto;
         width: auto;
         padding: 3px;
         margin-top: 5px;
-    }
+    } */
+
+    .description {
+        flex-direction: row;
+    }    
 
     .boxes {
-        display: flex;
-        justify-content: center;
-        /* align-items: center; */
-        flex-direction: column;
-        border: black solid 3px;
-        position: absolute;
-        z-index: +1;
-        width: auto;
-        height: auto;
-        color: white;
-        background-color: black;
-        border-radius: 10px;
-        padding: 15px;
-    }
-
-    .back {
-        display: flex;
-        align-self: flex-end;
-        position: absolute;
-        z-index: +1;
-        bottom: 1px;
-        right: 1px;
-        width: 23px;
-        border-radius: 50px;
-        color: white;
-        background-color: black;
+        width: 50%;
+        top: 5%;
+        left: 25%;
     }
     
     p {
@@ -146,29 +200,22 @@ button {
         display: flex;
         align-items: center;
         /* justify-content: center; */
-        width: 50px;
-        height: 25px;
     }
     
-    .listIt {
+    /* .listIt {
         display: flex;
         justify-content: center;
-    }
+    } */
     
-    .listing {
-        display: flex;
-        justify-content: center;
-    }
-
     .showPopup {
         display: flex;
         height: 5px;
     }
     
-    button {
+    /* button {
         margin-top: 5px;
-        width: 100px;
+        /* width: 100px;
         color: red;
         border: solid 2px;
-    }
+    } */
 }

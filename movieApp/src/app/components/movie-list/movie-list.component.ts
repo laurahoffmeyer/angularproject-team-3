@@ -32,9 +32,6 @@ export class MovieListComponent implements OnInit {
   @Output() isOnWatchListMovie = new EventEmitter<any>();
 
   ngOnInit(): void {
-    // this.getGenres();
-    console.log(this.genreArray);
-
     this.genreArray.forEach((item) => {
       this.movieGenres.forEach((id: any) => {
         if (item.id === id) {
@@ -42,7 +39,6 @@ export class MovieListComponent implements OnInit {
         }
       });
     });
-    console.log(this.newGenres);
   }
 
   isWatchList() {

@@ -1,54 +1,75 @@
-img {
-    max-width: 100px;
-    height: auto;
-    border-radius: 5px;
+body {
+  display: flex;
+  justify-content: center;
 }
 
 #backdrop-bg {
-    min-height: 300px;
-    width: 100%;
-    background: var(--backdrop);
-    background-position: center;
-    background-size: cover;
+  min-height: 300px;
+  width: 100%;
+  background: var(--backdrop);
+  background-position: center;
+  background-size: cover;
 }
 
-h1 {
-    background-color: black;
-    color: white;
+.wlDetails {
+    padding: 0px auto;
+    margin: 0px 0px 0px 5px;
+}
+
+.wlDetails button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wlDetails h2 {
+    text-align: center;
+}
+
+.detailline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
     height: auto;
-    border-radius: 25px;
-    padding: 12px;
+    padding: 3px;
+    margin-top: 5px;
+    text-align: center;
+    flex-direction: row;
+}
+
+p {
+    font-weight: bold;
+    padding: 5px;
+}
+
+.horz-image-container img {
+    width: 100%;
+}
+
+.vert-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+}
+
+.vert-image-container img {
+    max-height: 350px;
+    width: auto;
 }
 
 .watchlist-movie {
-    display: flex;
-    background-color: white;
-    border-radius: 5px;
-    width: 600px;
-    height: 250px;
+  background-color: #e8e8e8;
+  border: black solid 2px;
+  border-radius: 5px;
+  margin: 12px;
+  max-width: 800px;
 }
 
 button {
-    display: flex;
-    justify-content: center;
-    background: red;
-    color: white;
-    border-radius: 5px;
-    width: 23px;
-    height: 23px;
-    border-radius: 50px;
-
-  }
-
-  /* .back {
-    display: flex;
-    align-self: flex-end;
-    position: absolute;
-    z-index: +1;
-    bottom: 1px;
-    right: 1px;
-    width: 23px;
-    color: white;
-    background-color: black;
-} */
-
+  margin-top: 5px;
+  background-color: #f05454;
+  color: #e8e8e8;
+  border: solid 2px;
+}

@@ -9,6 +9,8 @@ import { Movie } from '../../interfaces/movie';
 })
 export class WatchlistPageComponent implements OnInit {
 
+  constructor(private service: MovieService) { }
+
   @Input() wlMovie: Movie = {
     title: "",
     id: 0,
@@ -22,8 +24,6 @@ export class WatchlistPageComponent implements OnInit {
   }
   @Input() index: any;
   
-  constructor(private service: MovieService) { }
-
   ngOnInit(): void {
   }
 
