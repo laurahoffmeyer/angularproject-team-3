@@ -42,6 +42,11 @@ main {
     margin: 0px auto;
 }
 
+.onwatchlist {
+    color: #F05454;
+    background-color: #E8E8E8;
+    border: 2px solid #F05454;
+}
 .movie-pop-details {
     display: flex;
     flex-direction: column;

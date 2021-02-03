@@ -66,6 +66,8 @@ input, select {
   padding: 5px;
   width: 100%;
   border: none;
+  font-size: 18px;
+  text-align: center;
 }
 
 label {
@@ -87,7 +89,7 @@ button {
   flex-direction: column;
 }
 
-.watchlist-container h5 {
+h5 {
   color: #F05454;
 }
 

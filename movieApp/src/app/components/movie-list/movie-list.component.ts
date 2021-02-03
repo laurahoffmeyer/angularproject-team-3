@@ -13,6 +13,7 @@ export class MovieListComponent implements OnInit {
   constructor(private service: MovieService) {}
   @Input() i: number = 21;
   popupIndex: number = 21;
+  releaseyear: any;
 
   newGenres: any[] = [];
 
@@ -33,6 +34,7 @@ export class MovieListComponent implements OnInit {
   @Output() isOnWatchListMovie = new EventEmitter<any>();
 
   ngOnInit(): void {
+    let releaseyear = this.singleMovie.release_date.slice(0, 4);
     let movieGenres = this.singleMovie.genre_ids
     this.genreArray.forEach((item) => {
       movieGenres.forEach((id: any) => {

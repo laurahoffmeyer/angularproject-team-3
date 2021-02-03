@@ -91,9 +91,6 @@ export class SearchCriteriaComponent implements OnInit {
       this.filterRatingLTE = '';
     }
 
-    console.log(this.filterRatingGTE)
-    console.log(this.filterRatingLTE)
-
     this.service.getMovieFilters(this.filterGenre, this.filterRatingGTE, this.filterRatingLTE, this.filterReleaseYear)
       .subscribe((data) => {
         this.service.movieArray.splice(0, this.service.movieArray.length);
@@ -101,8 +98,6 @@ export class SearchCriteriaComponent implements OnInit {
         this.mainData = data;
         let mainDataArray = this.mainData.results;
 
-        console.log(this.service.getMovieFilters);
-        console.log(mainDataArray);
         mainDataArray.forEach((movie: Movie) => {
           this.service.movieArray.push(movie);
         });
