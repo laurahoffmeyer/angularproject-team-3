@@ -43,6 +43,7 @@
       <button (click)="searchFilters()">Search by Options</button>
     </form>
   </div>
+</div>
 
   <div *ngIf="showMovieResults">
     <app-movie-list
@@ -53,7 +54,6 @@
       [movieGenres]="movie.genre_ids"
     ></app-movie-list>
   </div>
-</div>
 
 <div *ngIf="showWatchList">
   <h1>Watchlist</h1>

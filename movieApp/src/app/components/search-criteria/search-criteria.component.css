@@ -9,6 +9,7 @@
   height: auto;
   width: auto;
   padding: 15px;
+  box-shadow: 0 0 20px white;
 }
 
 .flixBox {
