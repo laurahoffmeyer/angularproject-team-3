@@ -26,6 +26,7 @@ hr {
   height: auto;
   width: 100%;
   padding: 20px 5px;
+  box-shadow: 0 0 25px #F05454;
 }
 
 .forms-wrapper {
