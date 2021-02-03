@@ -17,7 +17,7 @@ button {
     padding: 7px 10px;
 }
 
-button:hover {
+button:hover, a:hover {
     cursor: pointer;
 }
 
@@ -44,4 +44,6 @@ input {
 /* Grey - #E8E8E8
 Red - #F05454
 Blue - #30475E
-Black - #222831 */
+Black - #222831 
+SUPER DARK - #111419
+DARKEST - #080a0c */

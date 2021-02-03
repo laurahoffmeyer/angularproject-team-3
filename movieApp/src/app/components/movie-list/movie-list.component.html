@@ -45,14 +45,16 @@
                 src="https://image.tmdb.org/t/p/original/{{ singleMovie.poster_path }}"
               />
             </div>
-            <h2>{{ singleMovie.title }}</h2>
-            <p>{{ singleMovie.overview }}</p>
-            <p>Release Date: {{ singleMovie.release_date }}</p>
-            <p>Rating: {{ singleMovie.vote_average }}</p>
-            <div class="genres">
-              <p>Genres:</p><p *ngFor="let genre of newGenres">{{ genre }}</p>
+            <div class="movie-pop-details">
+              <h2>{{ singleMovie.title }}</h2>
+              <p>{{ singleMovie.overview }}</p>
+              <small><p>Release Date: {{ singleMovie.release_date }}</p>
+              <p>Rating: {{ singleMovie.vote_average }}</p>
+              <div class="genres">
+                <p>Genres:</p><p *ngFor="let genre of newGenres">{{ genre }}</p>
+              </div></small>
+              <a (click)="closePopup()" class="back"><i class="far fa-times-circle"></i></a>
             </div>
-            <button (click)="closePopup()" class="back"><i class="far fa-times-circle"></i></button>
           </div>
         </div>
       </div>
